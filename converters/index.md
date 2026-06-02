@@ -18,12 +18,11 @@ OSI converters follow a **hub-and-spoke** architecture:
                          │
 ┌─────────────┐    ┌─────┴─────┐    ┌─────────────┐
 │     dbt     ├────┤    OSI    ├────┤  Salesforce │
-└─────────────┘    └──┬─────┬──┘    └─────────────┘
-                      │     │
-             ┌────────┘     └────────┐
-      ┌──────┴──────┐        ┌───────┴─────┐
-      │  Databricks │        │   Honeydew  │
-      └─────────────┘        └─────────────┘
+└─────────────┘    └─────┬─────┘    └─────────────┘
+                         │
+                  ┌──────┴──────┐
+                  │  Databricks │
+                  └─────────────┘
 ```
 
 This approach avoids the need for point-to-point converters between every pair of vendors. With N vendors, a point-to-point strategy would require N*(N-1) converters. With OSI as the hub, only 2*N converters are needed (one import and one export per vendor), and interoperability with all other vendors comes for free.
